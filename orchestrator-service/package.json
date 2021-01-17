@@ -1,0 +1,30 @@
+{
+  "name": "@rpstar/orchestrator-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start-debug": "nodemon --inspect ./src/index.ts",
+    "start": "nodemon ./src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@ssh.dev.azure.com:v3/rpstar/rpstar/orchestrator-service"
+  },
+  "author": "Alin Florin",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^12.12.6",
+    "@types/uuid": "^3.4.6",
+    "nodemon": "^1.19.4",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "@rpstar/common": "^1.0.0-191119.3",
+    "@rpstar/microservices-framework": "^1.0.0-191120.1",
+    "docker-cli-js": "^2.6.0",
+    "uuid": "^3.3.3"
+  }
+}

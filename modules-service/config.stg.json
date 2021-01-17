@@ -1,0 +1,4 @@
+{
+  "mqttConnectionString": "mqtt://mosquitto:1883",
+  "dbCon": "mongodb://mongodb/rpstar_modules"
+}

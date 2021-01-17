@@ -1,0 +1,18 @@
+:host {
+  mat-sidenav-container {
+    height: 100%;
+  }
+
+  mat-nav-list {
+    height: 100%;
+  }
+
+  a.sidebar-active {
+    text-shadow: 0px 0px 5px #fff;
+  }
+
+  .mat-list-item-content {
+    display: flex;
+    flex: 1;
+  }
+}

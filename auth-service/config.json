@@ -1,0 +1,4 @@
+{
+  "jwtAudience": "rpstar-aud-jwt",
+  "jwtIssuer": "rpstar-iss-jwt"
+}

@@ -1,0 +1,20 @@
+<mat-toolbar color="default">
+  <mat-toolbar-row fxLayout="row">
+    <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-progress-spinner [style.visibility]="loaderService.shouldShowLoader ? 'visible' : 'hidden'" [diameter]="30"
+      mode="indeterminate"></mat-progress-spinner>
+    <img id="logo" class="clickable" routerLink="/" src="/assets/images/logo.png" height="100%" />
+    <span class="menu-spacer" fxFlex></span>
+    <div fxShow="true" fxHide.lt-md>
+      <a routerLink="/" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="navbar-active" mat-button>Home</a>
+      <a *ngIf="user == null" routerLink="/login" routerLinkActive="navbar-active" mat-button>Login</a>
+      <a *ngIf="user != null" routerLink="/modules" routerLinkActive="navbar-active" mat-button>Modules</a>
+      <a *ngIf="user != null" routerLink="/profile" routerLinkActive="navbar-active" mat-button>
+        <img *ngIf="user.avatarUrl != null" [src]="user.avatarUrl" height="32" />
+        <span *ngIf="user.avatarUrl == null">Profile</span>
+      </a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

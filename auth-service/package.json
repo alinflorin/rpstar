@@ -1,0 +1,29 @@
+{
+  "name": "@rpstar/auth-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start-debug": "nodemon --inspect ./src/index.ts",
+    "start": "nodemon ./src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@ssh.dev.azure.com:v3/rpstar/rpstar/auth-service"
+  },
+  "author": "Alin Florin",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jsonwebtoken": "^8.3.5",
+    "@types/node": "^12.12.11",
+    "nodemon": "^1.19.4",
+    "ts-node": "^8.5.2",
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "@rpstar/common": "^1.0.0-191119.3",
+    "@rpstar/microservices-framework": "^1.0.0-191119.1",
+    "jsonwebtoken": "^8.5.1"
+  }
+}

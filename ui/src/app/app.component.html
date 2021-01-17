@@ -1,0 +1,10 @@
+<div fxLayout="column" style="height: 100%">
+  <app-navbar [sidenav]="sidebar.sidenav"></app-navbar>
+  <app-sidebar #sidebar fxFlex>
+    <div id="content" fxFlex>
+      <router-outlet></router-outlet>
+    </div>
+  </app-sidebar>
+  <app-footer></app-footer>
+
+</div>

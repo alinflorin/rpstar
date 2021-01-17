@@ -1,0 +1,21 @@
+:host {
+  mat-card {
+    margin-bottom: 10px;
+    min-height: 235px;
+    min-width: 100px;
+    mat-card-content {
+      div {
+        height: 100%;
+      }
+      img {
+        max-height: 100px;
+      }
+    }
+
+    .add-button {
+      font-size: 100px;
+      margin-left: -75px;
+      margin-top: -75px;
+    }
+  }
+}

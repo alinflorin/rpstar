@@ -1,0 +1,4 @@
+{
+  "mqttConnectionString": "mqtt://mosquitto:1883",
+  "frontendBaseUrl": "https://rpstar-stg.uksouth.cloudapp.azure.com/"
+}

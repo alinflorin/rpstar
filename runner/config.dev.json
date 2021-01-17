@@ -1,0 +1,3 @@
+{
+  "mqttConnectionString": "mqtt://host.docker.internal:1883"
+}

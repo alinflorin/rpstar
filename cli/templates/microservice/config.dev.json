@@ -1,0 +1,3 @@
+{
+  "mqttConnectionString": "mqtt://localhost:1883"
+}

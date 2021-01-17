@@ -1,0 +1,29 @@
+name: 1.0.0-$(SourceBranchName)-$(Date:yyMMdd)$(Rev:.r)
+
+trigger:
+  branches:
+    include:
+      - develop
+      - master
+      - release/*
+
+pool:
+  vmImage: "ubuntu-latest"
+
+variables:
+  - name: tag
+    value: "$(Build.BuildNumber)"
+
+steps:
+  - task: DockerInstaller@0
+    inputs:
+      dockerVersion: "18.06.3-ce"
+  - task: Docker@2
+    inputs:
+      containerRegistry: "rpstar Docker Hub registry"
+      repository: "rpstar/runner"
+      command: "buildAndPush"
+      Dockerfile: "**/Dockerfile"
+      tags: |
+        $(Build.BuildNumber)
+        latest

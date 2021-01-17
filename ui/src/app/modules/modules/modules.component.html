@@ -1,0 +1,35 @@
+<h2>My Modules</h2>
+<div fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="10px">
+  <ng-container *ngIf="accessibleModules != null">
+    <mat-card fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%"
+      *ngFor="let module of accessibleModules">
+      <mat-card-header>
+        <mat-card-title>
+          {{module.name}}
+        </mat-card-title>
+        <mat-card-subtitle>Author: {{module.author ? module.author : 'rpstar'}}</mat-card-subtitle>
+        <mat-card-subtitle>Added by: {{module.owner ? module.owner : 'rpstar'}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <a target="_blank" [href]="module.repoUrl">
+            <img *ngIf="module.avatarUrl" [src]="module.avatarUrl" />
+          </a>
+        </div>
+      </mat-card-content>
+      <mat-card-footer>
+        <div fxLayout="row" fxLayoutAlign="end end">
+          <mat-icon *ngIf="module.owner != null" class="clickable" (click)="deleteModule(module)" color="warn">delete
+          </mat-icon>
+        </div>
+      </mat-card-footer>
+    </mat-card>
+  </ng-container>
+  <mat-card fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+    <mat-card-content fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-icon (click)="openAddModuleDialog()" class="clickable add-button">add</mat-icon>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

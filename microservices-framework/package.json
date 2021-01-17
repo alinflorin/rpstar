@@ -1,0 +1,24 @@
+{
+  "name": "@rpstar/microservices-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@ssh.dev.azure.com:v3/rpstar/rpstar/microservices-framework"
+  },
+  "dependencies": {
+    "moleculer": "^0.13.11",
+    "mqtt": "^3.0.0",
+    "rxjs": "^6.5.3"
+  },
+  "author": "Alin Florin",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^12.12.6",
+    "typescript": "^3.7.2"
+  }
+}

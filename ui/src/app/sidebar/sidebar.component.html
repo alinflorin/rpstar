@@ -1,0 +1,20 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-nav-list fxLayout="column">
+      <a routerLink="/" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="sidebar-active"
+        mat-list-item>Home</a>
+      <a *ngIf="user == null" routerLink="/login" routerLinkActive="sidebar-active" mat-list-item>Login</a>
+      <a *ngIf="user != null" routerLink="/modules" routerLinkActive="sidebar-active" mat-list-item>Modules</a>
+      <span fxFlex></span>
+      <a *ngIf="user != null" routerLink="/profile" routerLinkActive="sidebar-active" mat-list-item>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <img *ngIf="user.avatarUrl != null" [src]="user.avatarUrl" height="32" />
+          <span *ngIf="user.avatarUrl == null">Profile</span>
+        </div>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

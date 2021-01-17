@@ -1,0 +1,4 @@
+{
+  "mqttConnectionString": "mqtt://mosquitto:1883",
+  "tempFolder": "/tmp"
+}

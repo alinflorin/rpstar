@@ -1,0 +1,17 @@
+{
+  "watch": [
+    "config.json",
+    "config.dev.json",
+    "config.stg.json",
+    "config.prod.json",
+    "src/**/*.ts"
+  ],
+  "ext": "ts, json",
+  "env": {
+    "NODE_ENV": "dev"
+  },
+  "verbose": true,
+  "execMap": {
+    "ts": "node --require ts-node/register"
+  }
+}

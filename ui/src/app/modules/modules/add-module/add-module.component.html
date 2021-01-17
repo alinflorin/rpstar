@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Add Module from Git</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="formGroup">
+    <mat-form-field>
+      <input type="text" matInput formControlName="repoUrl" placeholder="Repository URL" />
+      <mat-error *ngIf="repoUrlFc.touched && repoUrlFc.invalid">
+        <span *ngIf="repoUrlFc.hasError('required')">
+          Repository URL is required
+        </span>
+        <span *ngIf="repoUrlFc.hasError('pattern')">
+          Repository URL is invalid
+        </span>
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <p [style.visibility]="currentMessage !== 'Initializing' ? 'visible': 'hidden'">
+    {{currentMessage}}
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button (click)="addModule(formGroup.value)" [disabled]="formGroup.invalid || loading" mat-raised-button
+    type="submit">Add</button>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

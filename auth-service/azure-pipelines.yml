@@ -1,0 +1,54 @@
+name: 1.0.0-$(SourceBranchName)-$(Date:yyMMdd)$(Rev:.r)
+
+trigger:
+  branches:
+    include:
+      - develop
+      - master
+      - release/*
+
+pool:
+  vmImage: "ubuntu-latest"
+
+variables:
+  - name: tag
+    value: "$(Build.BuildNumber)"
+
+steps:
+  - task: DockerInstaller@0
+    inputs:
+      dockerVersion: "18.06.3-ce"
+  - task: Docker@2
+    inputs:
+      containerRegistry: "rpstar Docker Hub registry"
+      repository: "rpstar/auth-service"
+      command: "buildAndPush"
+      Dockerfile: "**/Dockerfile"
+      tags: |
+        $(Build.BuildNumber)
+        latest
+
+  - task: replacetokens@3
+    inputs:
+      rootDirectory: "./"
+      targetFiles: "*.yaml"
+      encoding: "utf-8"
+      writeBOM: true
+      escapeType: "none"
+      actionOnMissing: "continue"
+      keepToken: false
+      tokenPrefix: "#{"
+      tokenSuffix: "}#"
+      emptyValue: "latest"
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: "./"
+      Contents: "*.yaml"
+      TargetFolder: "$(Build.ArtifactStagingDirectory)"
+      OverWrite: true
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: "$(Build.ArtifactStagingDirectory)"
+      ArtifactName: "drop"
+      publishLocation: "Container"

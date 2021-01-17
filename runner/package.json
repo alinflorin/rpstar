@@ -1,0 +1,24 @@
+{
+  "name": "@rpstar/runner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "build-docker": "docker build -t rpstar/runner:latest ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@ssh.dev.azure.com:v3/rpstar/rpstar/runner"
+  },
+  "author": "Alin Florin",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^12.12.11",
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "@rpstar/common": "^1.0.0-191119.3",
+    "@rpstar/microservices-framework": "^1.0.0-191120.1"
+  }
+}

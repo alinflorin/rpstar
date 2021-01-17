@@ -1,0 +1,30 @@
+{
+  "name": "@rpstar/cli",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "rpstar": "./index.js"
+  },
+  "main": "./build/cli.js",
+  "scripts": {
+    "build": "tsc && ncp ./templates/ ./build/templates"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@ssh.dev.azure.com:v3/rpstar/rpstar/cli"
+  },
+  "author": "Alin Florin",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/ncp": "^2.0.3",
+    "@types/node": "^12.12.11",
+    "@types/readline-sync": "^1.4.3",
+    "@types/recursive-readdir": "^2.2.0",
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "ncp": "^2.0.0",
+    "readline-sync": "^1.4.10",
+    "recursive-readdir": "^2.2.2"
+  }
+}

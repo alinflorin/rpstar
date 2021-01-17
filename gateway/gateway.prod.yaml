@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gateway
+  template:
+    metadata:
+      labels:
+        app: gateway
+    spec:
+      containers:
+        - name: gateway
+          image: rpstar/gateway:#{tag}#
+          env:
+            - name: NODE_ENV
+              value: prod
+            - name: GOOGLE_AUTH_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: rpstar-secrets
+                  key: GOOGLE_AUTH_CLIENT_ID
+            - name: GOOGLE_AUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: rpstar-secrets
+                  key: GOOGLE_AUTH_CLIENT_SECRET
+            - name: FACEBOOK_AUTH_APP_ID
+              valueFrom:
+                secretKeyRef:
+                  name: rpstar-secrets
+                  key: FACEBOOK_AUTH_APP_ID
+            - name: FACEBOOK_AUTH_APP_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: rpstar-secrets
+                  key: FACEBOOK_AUTH_APP_SECRET
+            - name: GITHUB_AUTH_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: rpstar-secrets
+                  key: GITHUB_AUTH_CLIENT_ID
+            - name: GITHUB_AUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: rpstar-secrets
+                  key: GITHUB_AUTH_CLIENT_SECRET
+            - name: MICROSOFT_AUTH_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: rpstar-secrets
+                  key: MICROSOFT_AUTH_CLIENT_ID
+            - name: MICROSOFT_AUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: rpstar-secrets
+                  key: MICROSOFT_AUTH_CLIENT_SECRET
+            - name: MICROSOFT_AUTH_TENANT
+              valueFrom:
+                secretKeyRef:
+                  name: rpstar-secrets
+                  key: MICROSOFT_AUTH_TENANT
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway
+spec:
+  clusterIP: None
+  selector:
+    app: gateway
+  ports:
+    - port: 3000
+      targetPort: 3000

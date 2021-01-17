@@ -1,0 +1,54 @@
+name: 1.0.0-$(Date:yyMMdd)$(Rev:.r)
+
+trigger:
+  branches:
+    include:
+      - master
+
+pool:
+  vmImage: "ubuntu-latest"
+
+variables:
+  - name: tag
+    value: "$(Build.BuildNumber)"
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "12.x"
+    displayName: "Install Node.js"
+
+  - task: Npm@1
+    inputs:
+      command: "custom"
+      customCommand: "version --no-git-tag-version $(tag)"
+
+  - task: Npm@1
+    inputs:
+      command: "custom"
+      customCommand: "ci"
+
+  - task: Npm@1
+    inputs:
+      command: "custom"
+      customCommand: "run build"
+
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: "./build"
+      Contents: "**"
+      TargetFolder: "$(Build.ArtifactStagingDirectory)"
+      OverWrite: true
+
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: "./"
+      Contents: "package.json"
+      TargetFolder: "$(Build.ArtifactStagingDirectory)"
+      OverWrite: true
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: "$(Build.ArtifactStagingDirectory)"
+      ArtifactName: "drop"
+      publishLocation: "Container"
